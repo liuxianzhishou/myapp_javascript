@@ -1,32 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <MainTabBar/>
+<!--    到其他界面返回后，原来界面位置保持-->
+    <keep-alive exclude="Detail">
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
+<script>
+import MainTabBar from "@/components/content/mainTabbar/MainTabBar";
+
+export default {
+  name: 'app',
+  components: {
+    MainTabBar
+  }
+}
+</script>
+
 <style>
+@import "assets/css/base.css";
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  position: relative;
 }
 </style>
